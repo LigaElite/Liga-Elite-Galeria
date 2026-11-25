@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería Oficial | Liga Élite</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #080b13;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  background: linear-gradient(120deg,#10275d,#080b13);
+  padding: 25px 6%;
+  border-bottom: 1px solid #263c68;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+header img {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+header h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: 32px;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+header p {
+  margin: 2px 0;
+  color: #aebddc;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+main {
+  max-width: 1150px;
+  margin: auto;
+  padding: 35px 22px;
+}
+
+.intro {
+  margin-bottom: 28px;
+}
+
+.intro h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: 34px;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.intro p {
+  color: #aeb6c8;
+  font-size: 13px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  min-height: 245px;
+  border-radius: 17px;
+  overflow: hidden;
+  background: linear-gradient(135deg,#173c80,#080d1b);
+  border: 1px solid #34466b;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  color: white;
+}
+
+.card img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  inset: 0;
+  opacity: .72;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 25%,rgba(0,0,0,.9));
+}
+
+.info {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  width: 100%;
+}
+
+.info h3 {
+  font-family: 'Anton', sans-serif;
+  font-size: 27px;
+  margin: 0;
+}
+
+.info p {
+  font-size: 12px;
+  color: #d5dbea;
+  margin: 5px 0;
+}
+
+.count {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  background: #101d3a;
+  border: 1px solid #91b4ed;
+  border-radius: 20px;
+  padding: 6px 13px;
+  font-size: 11px;
+  z-index: 3;
+}
+
+footer {
+  text-align: center;
+  color: #8493b1;
+  padding: 30px;
+  font-size: 11px;
+}
+
+@media(max-width:600px) {
+  header { padding: 18px; }
+  header h1 { font-size: 25px; }
+  header img { width: 62px; height: 62px; }
+  main { padding: 28px 14px; }
+  .gallery { gap: 12px; }
+  .card { min-height: 190px; }
+  .info { padding: 12px; }
+  .info h3 { font-size: 20px; }
+  .info p { font-size: 10px; }
+  .count { font-size: 9px; padding: 5px 8px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="Liga%20%C3%89lite%20(32).jpg" alt="Logo Liga Élite">
+  <div>
+    <h1>LIGA ÉLITE</h1>
+    <p>GALERÍA OFICIAL DE FOTOS</p>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <h2>GALERÍA DE FOTOS</h2>
+    <p>Encontrá y disfrutá las fotografías de cada jornada.</p>
+  </section>
+
+  <section class="gallery">
+
+    <a class="card" href="#" target="_blank">
+      <span class="count">40 FOTOS</span>
+      <div class="info">
+        <h3>FECHA 21.11</h3>
+        <p>21 de noviembre de 2026</p>
+      </div>
+    </a>
+
+    <a class="card" href="#" target="_blank">
+      <span class="count">46 FOTOS</span>
+      <div class="info">
+        <h3>FECHA 14.11</h3>
+        <p>14 de noviembre de 2026</p>
+      </div>
+    </a>
+
+  </section>
+</main>
+
+<footer>
+  LIGA ÉLITE · FÚTBOL Y PASIÓN
+</footer>
+
+</body>
+</html>
