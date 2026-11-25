@@ -1,299 +1,255 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liga Élite | Galería Oficial</title>
 
-<title>Liga Élite | Galería Oficial</title>
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<style>
-* {
-  box-sizing: border-box;
-}
+    body {
+      background: #080d18;
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
 
-body {
-  margin: 0;
-  background: #080B13;
-  color: #FFFFFF;
-  font-family: 'Poppins', sans-serif;
-}
+    /* ENCABEZADO */
 
-/* ENCABEZADO */
+    header {
+      background: linear-gradient(120deg, #07152e, #102c58, #07152e);
+      border-bottom: 1px solid rgba(150, 190, 255, 0.3);
+      padding: 25px 7%;
+    }
 
-header {
-  background: linear-gradient(110deg, #10275D, #080B13);
-  padding: 25px 6%;
-  border-bottom: 1px solid #263C68;
-  display: flex;
-  align-items: center;
-  gap: 22px;
-}
+    .header-content {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
 
-header img {
-  width: 90px;
-  height: 90px;
-  object-fit: contain;
-  border-radius: 0;
-  filter: drop-shadow(0 5px 12px rgba(70,140,255,.35));
-}
+    .logo {
+      width: 115px;
+      height: 115px;
+      object-fit: contain;
+      background: transparent;
+      flex-shrink: 0;
+    }
 
-.brand h1 {
-  font-family: 'Anton', sans-serif;
-  font-size: 36px;
-  letter-spacing: 5px;
-  margin: 0;
-  background: linear-gradient(
-    180deg,
-    #FFFFFF 0%,
-    #DCE5F2 30%,
-    #899BB3 65%,
-    #F4F7FC 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+    .brand h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(35px, 5vw, 52px);
+      letter-spacing: 4px;
+      color: #dcecff;
+      line-height: 1.1;
+    }
 
-.brand p {
-  margin: 5px 0 0;
-  color: #B9C8E1;
-  font-size: 11px;
-  letter-spacing: 3px;
-}
+    .brand p {
+      font-size: 12px;
+      letter-spacing: 5px;
+      margin-top: 10px;
+      color: #c6d9f5;
+    }
 
-/* CONTENIDO */
+    /* CONTENIDO PRINCIPAL */
 
-main {
-  max-width: 1150px;
-  margin: auto;
-  padding: 42px 24px;
-}
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 65px 7%;
+    }
 
-.intro {
-  margin-bottom: 30px;
-}
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(34px, 5vw, 48px);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      color: #e7f1ff;
+    }
 
-.intro h2 {
-  font-family: 'Anton', sans-serif;
-  font-size: 38px;
-  letter-spacing: 2px;
-  margin: 0;
-  color: #E1E8F3;
-}
+    .section-description {
+      font-size: 15px;
+      color: #c4cbd7;
+      margin-bottom: 40px;
+    }
 
-.intro p {
-  color: #AEB6C8;
-  font-size: 13px;
-  margin-top: 8px;
-}
+    /* TARJETAS DE FECHAS */
 
-/* GALERÍA */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 25px;
+    }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
+    .date-card {
+      position: relative;
+      min-height: 370px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 30px;
+      overflow: hidden;
+      border-radius: 25px;
+      text-decoration: none;
+      color: white;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(10, 50, 105, 0.45),
+          rgba(4, 15, 35, 0.96)
+        ),
+        linear-gradient(135deg, #1765bb, #102b55 65%, #07152c);
+      border: 1px solid rgba(160, 200, 255, 0.45);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
 
-.card {
-  position: relative;
-  min-height: 280px;
-  border-radius: 17px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #173C80, #080D1B);
-  border: 1px solid #34466B;
-  display: flex;
-  align-items: flex-end;
-  text-decoration: none;
-  color: white;
-  transition: transform .25s ease, border-color .25s ease;
-}
+    .date-card:hover {
+      transform: translateY(-6px);
+      border-color: #dcecff;
+    }
 
-.card:hover {
-  transform: translateY(-4px);
-  border-color: #9CB9E9;
-}
+    .photo-count {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      background: rgba(5, 20, 45, 0.25);
+    }
 
-.card img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: .75;
-}
+    .date-card h3 {
+      font-family: 'Anton', sans-serif;
+      font-size: 36px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
 
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    transparent 20%,
-    rgba(0,0,0,.88) 100%
-  );
-}
+    .date-card p {
+      font-size: 14px;
+      color: #d7e3f5;
+    }
 
-.info {
-  position: relative;
-  z-index: 2;
-  padding: 22px;
-  width: 100%;
-}
+    /* PIE DE PÁGINA */
 
-.info h3 {
-  font-family: 'Anton', sans-serif;
-  font-size: 29px;
-  letter-spacing: 1.5px;
-  margin: 0;
-  color: #FFFFFF;
-}
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      border-top: 1px solid rgba(150, 190, 255, 0.2);
+      color: #8294ad;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
 
-.info p {
-  font-size: 12px;
-  color: #D5DBE8;
-  margin: 6px 0 0;
-}
+    /* ADAPTACIÓN A CELULARES */
 
-.count {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(10,20,45,.92);
-  border: 1px solid #91B4ED;
-  border-radius: 20px;
-  padding: 7px 14px;
-  font-size: 11px;
-  font-weight: 600;
-  z-index: 3;
-  color: #E6EDF9;
-}
+    @media (max-width: 700px) {
+      header {
+        padding: 20px 5%;
+      }
 
-/* PIE */
+      .header-content {
+        gap: 15px;
+      }
 
-footer {
-  text-align: center;
-  color: #8493B1;
-  padding: 35px 15px;
-  font-size: 10px;
-  letter-spacing: 2px;
-  border-top: 1px solid #202C44;
-}
+      .logo {
+        width: 85px;
+        height: 85px;
+      }
 
-/* CELULARES */
+      .brand h1 {
+        font-size: 32px;
+        letter-spacing: 2px;
+      }
 
-@media(max-width: 600px) {
+      .brand p {
+        font-size: 9px;
+        letter-spacing: 2px;
+      }
 
-  header {
-    padding: 19px 16px;
-    gap: 14px;
-  }
+      main {
+        padding: 45px 5%;
+      }
 
-  header img {
-    width: 68px;
-    height: 68px;
-  }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
 
-  .brand h1 {
-    font-size: 27px;
-    letter-spacing: 3px;
-  }
-
-  .brand p {
-    font-size: 8px;
-    letter-spacing: 2px;
-  }
-
-  main {
-    padding: 30px 14px;
-  }
-
-  .intro h2 {
-    font-size: 30px;
-  }
-
-  .gallery {
-    gap: 12px;
-  }
-
-  .card {
-    min-height: 205px;
-    border-radius: 13px;
-  }
-
-  .info {
-    padding: 12px;
-  }
-
-  .info h3 {
-    font-size: 20px;
-    letter-spacing: 1px;
-  }
-
-  .info p {
-    font-size: 9px;
-  }
-
-  .count {
-    font-size: 9px;
-    padding: 5px 8px;
-    top: 9px;
-    right: 9px;
-  }
-}
-
-</style>
+      .date-card {
+        min-height: 300px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
+  <header>
+    <div class="header-content">
 
-  <img src="logo-liga.png" alt="Logo Liga Élite">
+      <!-- LOGO -->
+      <img
+        class="logo"
+        src="Liga%20Élite.png"
+        alt="Logo Liga Élite"
+      >
 
-  <div class="brand">
-    <h1>LIGA ÉLITE</h1>
-    <p>GALERÍA OFICIAL DE FOTOS</p>
-  </div>
+      <div class="brand">
+        <h1>LIGA ÉLITE</h1>
+        <p>GALERÍA OFICIAL DE FOTOS</p>
+      </div>
 
-</header>
+    </div>
+  </header>
 
-<main>
+  <main>
 
-  <section class="intro">
-    <h2>GALERÍA DE FOTOS</h2>
-    <p>Encontrá y disfrutá las fotografías de cada jornada.</p>
-  </section>
+    <h2 class="section-title">GALERÍA DE FOTOS</h2>
 
-  <section class="gallery">
+    <p class="section-description">
+      Encontrá y disfrutá las fotografías de cada jornada.
+    </p>
 
-    <a class="card" href="#" target="_blank">
-      <span class="count">40 FOTOS</span>
+    <section class="gallery-grid">
 
-      <div class="info">
+      <!-- FECHA 21.11 -->
+      <a href="#" class="date-card">
+        <span class="photo-count">40 FOTOS</span>
+
         <h3>FECHA 21.11</h3>
         <p>21 de noviembre de 2026</p>
-      </div>
-    </a>
+      </a>
 
-    <a class="card" href="#" target="_blank">
-      <span class="count">46 FOTOS</span>
+      <!-- FECHA 14.11 -->
+      <a href="#" class="date-card">
+        <span class="photo-count">40 FOTOS</span>
 
-      <div class="info">
         <h3>FECHA 14.11</h3>
         <p>14 de noviembre de 2026</p>
-      </div>
-    </a>
+      </a>
 
-  </section>
+    </section>
 
-</main>
+  </main>
 
-<footer>
-  LIGA ÉLITE · FÚTBOL Y PASIÓN
-</footer>
+  <footer>
+    LIGA ÉLITE · GALERÍA OFICIAL
+  </footer>
 
 </body>
 </html>
