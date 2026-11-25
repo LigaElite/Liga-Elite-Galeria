@@ -58,11 +58,14 @@ header::after {
   gap: 25px;
 }
 
+/* LOGO PNG TRANSPARENTE */
+
 .logo {
   width: 100px;
   height: 100px;
   object-fit: contain;
   flex-shrink: 0;
+  background: transparent;
   filter: drop-shadow(0 0 12px rgba(40, 160, 255, 0.35));
 }
 
@@ -98,39 +101,41 @@ header::after {
 main {
   max-width: 1400px;
   margin: auto;
-  padding: 75px 6%;
+  padding: 65px 6%;
 }
+
+/* TÍTULO GALERÍA */
 
 .section-title {
   font-family: 'Anton', sans-serif;
-  font-size: clamp(48px, 7vw, 76px);
-  letter-spacing: 2px;
+  font-size: clamp(34px, 5vw, 48px);
+  letter-spacing: 1px;
   line-height: 1.1;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 
   background: linear-gradient(
     180deg,
     #ffffff 0%,
-    #c6e7ff 22%,
+    #dceeff 22%,
     #ffffff 43%,
-    #8ea9c9 65%,
+    #a4bddb 65%,
     #f4faff 82%,
-    #8199b9 100%
+    #829ab8 100%
   );
 
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 
-  filter: drop-shadow(0 3px 12px rgba(70, 160, 255, 0.35));
+  filter: drop-shadow(0 3px 10px rgba(70, 160, 255, 0.3));
 }
 
 .section-description {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.4px;
   color: #d5e5f7;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 /* TARJETAS DE FECHAS */
@@ -193,6 +198,8 @@ main {
     0 0 25px rgba(55, 160, 255, 0.45),
     0 20px 45px rgba(0, 0, 0, 0.45);
 }
+
+/* CANTIDAD DE FOTOS */
 
 .photo-count {
   position: absolute;
@@ -262,11 +269,11 @@ footer {
   }
 
   main {
-    padding: 55px 5%;
+    padding: 45px 5%;
   }
 
   .section-title {
-    font-size: 49px;
+    font-size: 40px;
   }
 
   .section-description {
@@ -320,7 +327,7 @@ footer {
   <h2 class="section-title">GALERÍA DE FOTOS</h2>
 
   <p class="section-description">
-    Encontrá y disfrutá las fotografías de cada jornada.
+    Encontrá y disfrutá la fotografía de cada jornada.
   </p>
 
   <section class="gallery-grid">
