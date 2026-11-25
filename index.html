@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -336,9 +335,7 @@ footer {
 
   <h2 class="section-title">GALERÍA DE FOTOS</h2>
 
-  <p class="section-description">
-    LAS FOTOS DE CADA JORNADA
-  </p>
+  <p class="section-description">LAS FOTOS DE CADA JORNADA</p>
 
   <section class="gallery-grid" id="gallery-grid" aria-live="polite">
     <p class="gallery-message">Cargando álbumes...</p>
@@ -350,14 +347,16 @@ footer {
   LIGA ÉLITE · GALERÍA OFICIAL
 </footer>
 
-
 <script>
-  // La galería toma sus álbumes directamente de esta planilla de Google Sheets.
+
+  // CONEXIÓN CON GOOGLE SHEETS
+
   const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTttAUPS0FpZuRmyN2S9Taolsx-Rz0f2XwqR0S9oF_kLW0JzeN4x3iUnxC4AtVpFAGbB_0a_oB6uCDS/pub?output=csv";
 
   const gallery = document.getElementById("gallery-grid");
 
-  // Convierte el CSV en filas y respeta comas dentro de celdas entre comillas.
+  // LECTOR CSV
+
   function parseCSV(text) {
     const rows = [];
     let row = [];
@@ -379,7 +378,11 @@ footer {
       } else if ((char === "\n" || char === "\r") && !inQuotes) {
         if (char === "\r" && next === "\n") i++;
         row.push(cell.trim());
-        if (row.some(value => value !== "")) rows.push(row);
+
+        if (row.some(value => value !== "")) {
+          rows.push(row);
+        }
+
         row = [];
         cell = "";
       } else {
@@ -388,9 +391,15 @@ footer {
     }
 
     row.push(cell.trim());
-    if (row.some(value => value !== "")) rows.push(row);
+
+    if (row.some(value => value !== "")) {
+      rows.push(row);
+    }
+
     return rows;
   }
+
+  // NORMALIZAR ENCABEZADOS
 
   function normalizeHeader(value) {
     return (value || "")
@@ -401,32 +410,53 @@ footer {
   }
 
   function makeDateLabel(value) {
-    const raw = (value || "").trim();
-    // Si la fecha ya está escrita como texto, se muestra tal como está.
-    return raw;
+    return (value || "").trim();
   }
 
   function safeText(value) {
     return String(value ?? "").trim();
   }
 
+  // GENERAR TARJETAS
+
   function renderAlbums(rows) {
+
     if (!rows.length) {
-      gallery.innerHTML = '<p class="gallery-message">Todavía no hay álbumes publicados.</p>';
+      gallery.innerHTML =
+        '<p class="gallery-message">Todavía no hay álbumes publicados.</p>';
       return;
     }
 
     const headers = rows[0].map(normalizeHeader);
-    const findColumn = (...names) => headers.findIndex(header => names.includes(header));
 
-    const titleIndex = findColumn("titulo", "album", "nombre", "nombrealbum");
-    const dateIndex = findColumn("fecha", "fechadelalbum");
-    const countIndex = findColumn("cantidaddefotos", "fotos", "cantidadfotos", "cantidadd efotos");
-    const linkIndex = findColumn("linkdedrive", "linkdrive", "drive", "enlace", "enlacededrive");
+    const findColumn = (...names) =>
+      headers.findIndex(header => names.includes(header));
 
-    const requiredMissing = titleIndex === -1 || dateIndex === -1 || countIndex === -1 || linkIndex === -1;
+    const titleIndex = findColumn(
+      "titulo", "album", "nombre", "nombrealbum"
+    );
+
+    const dateIndex = findColumn(
+      "fecha", "fechadelalbum"
+    );
+
+    const countIndex = findColumn(
+      "cantidaddefotos", "fotos", "cantidadfotos"
+    );
+
+    const linkIndex = findColumn(
+      "linkdedrive", "linkdrive", "drive", "enlace", "enlacededrive"
+    );
+
+    const requiredMissing =
+      titleIndex === -1 ||
+      dateIndex === -1 ||
+      countIndex === -1 ||
+      linkIndex === -1;
+
     if (requiredMissing) {
-      gallery.innerHTML = '<p class="gallery-message">Revisá los encabezados de la planilla: TITULO, FECHA, CANTIDAD DE FOTOS y LINK DE DRIVE.</p>';
+      gallery.innerHTML =
+        '<p class="gallery-message">Revisá los encabezados de la planilla: TITULO, FECHA, CANTIDAD DE FOTOS y LINK DE DRIVE.</p>';
       return;
     }
 
@@ -438,13 +468,15 @@ footer {
     })).filter(album => album.title && album.link);
 
     if (!albums.length) {
-      gallery.innerHTML = '<p class="gallery-message">Todavía no hay álbumes cargados. Agregá una fila en la planilla para publicarlo.</p>';
+      gallery.innerHTML =
+        '<p class="gallery-message">Todavía no hay álbumes cargados. Agregá una fila en la planilla para publicarlo.</p>';
       return;
     }
 
     gallery.innerHTML = "";
 
     albums.forEach(album => {
+
       const card = document.createElement("a");
       card.className = "date-card";
       card.href = album.link;
@@ -453,7 +485,9 @@ footer {
 
       const count = document.createElement("span");
       count.className = "photo-count";
-      count.textContent = album.count ? `${album.count} FOTOS` : "VER FOTOS";
+      count.textContent = album.count
+        ? `${album.count} FOTOS`
+        : "VER FOTOS";
 
       const title = document.createElement("h3");
       title.textContent = album.title;
@@ -466,19 +500,36 @@ footer {
     });
   }
 
+  // CARGAR ÁLBUMES
+
   async function loadAlbums() {
+
     try {
-      const response = await fetch(SHEET_CSV_URL, { cache: "no-store" });
-      if (!response.ok) throw new Error("No se pudo leer la planilla.");
+
+      const response = await fetch(SHEET_CSV_URL, {
+        cache: "no-store"
+      });
+
+      if (!response.ok) {
+        throw new Error("No se pudo leer la planilla.");
+      }
+
       const csvText = await response.text();
+
       renderAlbums(parseCSV(csvText));
+
     } catch (error) {
+
       console.error(error);
-      gallery.innerHTML = '<p class="gallery-message">No pudimos cargar los álbumes. Verificá que la planilla esté publicada en la web.</p>';
+
+      gallery.innerHTML =
+        '<p class="gallery-message">No pudimos cargar los álbumes. Verificá que la planilla esté publicada en la web.</p>';
+
     }
   }
 
   loadAlbums();
+
 </script>
 
 </body>
